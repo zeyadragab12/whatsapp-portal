@@ -1,5 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import { AR } from './ar'
+import { AR as AR_BASE } from './ar'
+import { AR2 } from './ar2'
+
+const AR: Record<string, string> = { ...AR2, ...AR_BASE }
 
 export type Lang = 'en' | 'ar'
 
