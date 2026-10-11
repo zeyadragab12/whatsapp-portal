@@ -1,0 +1,25 @@
+# Backup of the Edge Functions deployed to Supabase project lylcugsxxidcbldedmyp.
+# verify_jwt matches what is deployed: functions the browser calls check the user's login;
+# the webhook (called by Meta) and the scheduled workers (called by pg_cron with a secret) do their own checks.
+
+[functions.send-whatsapp-template]
+# off at the gateway so the once-a-minute timer can call it; the function itself rejects anyone who is not signed in or has no worker secret
+verify_jwt = false
+
+[functions.submit-whatsapp-template]
+verify_jwt = true
+
+[functions.send-whatsapp-reply]
+verify_jwt = true
+
+[functions.whatsapp-webhook]
+verify_jwt = false
+
+[functions.process-queue]
+verify_jwt = false
+
+[functions.whatsapp-health]
+verify_jwt = false
+
+[functions.sync-whatsapp-templates]
+verify_jwt = false
